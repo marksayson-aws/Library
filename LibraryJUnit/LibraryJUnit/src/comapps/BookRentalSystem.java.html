@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>BookRentalSystem.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">LibraryTest (Sep 16, 2025 2:40:42 PM)</a> &gt; <a href="../../index.html" class="el_group">LibraryJUnit</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">comapps</a> &gt; <span class="el_source">BookRentalSystem.java</span></div><h1>BookRentalSystem.java</h1><pre class="source lang-java linenums">package comapps;
+
+import java.util.ArrayList;
+
+public class BookRentalSystem {
+    
+    private BookRentalSystem() {}
+    
+<span class="fc" id="L9">    public static ArrayList&lt;Book&gt; library = new ArrayList&lt;&gt;();</span>
+
+    // Adds books
+    public static void addBooks(Book book) {
+<span class="fc" id="L13">        library.add(book);</span>
+<span class="fc" id="L14">    }</span>
+
+    // Rents books based on index of library[]
+    public static void rentBooks(int index) {
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (index &lt; library.size()) {</span>
+<span class="fc" id="L19">            library.get(index).rent();</span>
+<span class="fc" id="L20">        } else {</span>
+<span class="fc" id="L21">            System.out.println(&quot;Invalid index: &quot; + index);</span>
+        }
+<span class="fc" id="L23">    }</span>
+
+    // For resetting library[] when testing
+    public static void clearLibrary() {
+<span class="fc" id="L27">        library.clear();</span>
+<span class="fc" id="L28">    }</span>
+
+    // Getting size of library for test validation
+    public static int getLibrarySize() {
+<span class="fc" id="L32">        return library.size();</span>
+    }
+
+    // Getter for library[]
+    public static ArrayList&lt;Book&gt; getLibrary() {
+<span class="fc" id="L37">        return library;</span>
+    }
+
+    // Display all books
+    public static void displayAllBooks() {
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        for (Book b : library) {</span>
+<span class="fc" id="L43">            System.out.println(b.getTitle() + &quot;\t&quot; + b.getAuthor() + &quot;\t&quot; + b.getYearPublished());</span>
+        }
+<span class="fc" id="L45">    }</span>
+    
+    // Display only rented books
+    public static void displayRentedBooks() {
+<span class="fc" id="L49">        System.out.println(&quot;Books rented:&quot;);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        for (Book b : library) {</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">            if (b.isRented()) {</span>
+<span class="fc" id="L52">                System.out.println(b.getTitle() + &quot;\t&quot; + b.getAuthor() + &quot;\t&quot; + b.getYearPublished());</span>
+            }
+        }
+<span class="fc" id="L55">    }</span>
+    
+    // Main method testing
+    public static void main (String args[]) {
+        // Add books
+<span class="fc" id="L60">        BookRentalSystem.addBooks(new FictionBook(&quot;The Lord of the Rings&quot;, &quot;J.R.R. Tolkien&quot;, 1954));</span>
+<span class="fc" id="L61">        BookRentalSystem.addBooks(new FictionBook(&quot;To Kill a Mockingbird&quot;, &quot;Harper Lee&quot;, 1960));</span>
+<span class="fc" id="L62">        BookRentalSystem.addBooks(new NonFictionBook(&quot;The Tipping Point&quot;, &quot;M. Gladwell&quot;, 2000));</span>
+<span class="fc" id="L63">        BookRentalSystem.addBooks(new NonFictionBook(&quot;Guns, Germs, and Steel&quot;, &quot;Jared Diamond &quot;, 1997));</span>
+        
+<span class="fc" id="L65">        BookRentalSystem.rentBooks(0);</span>
+<span class="fc" id="L66">        BookRentalSystem.rentBooks(2);</span>
+        
+<span class="fc" id="L68">        displayAllBooks();</span>
+<span class="fc" id="L69">        displayRentedBooks();</span>
+<span class="fc" id="L70">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span>LibraryTest (Sep 16, 2025 2:40:42 PM)</div></body></html>
